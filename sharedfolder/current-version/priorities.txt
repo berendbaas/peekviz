@@ -1,0 +1,13 @@
+stuff to do:
+
+
+- click folder icon for show/hide as well as name of directory
+
+- scrap the entire tree and refetch it upon restart
+
+- capability to diff without first loading both directories
+
+- compression between server & browser (low priority)
+
+
+- add 'pip install paste' to initial setup requirements

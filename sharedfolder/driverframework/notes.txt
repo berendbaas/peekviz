@@ -1,0 +1,9 @@
+General file for keeping notes that we want to be copied into the minix vm
+
+
+
+Snapshot feature? For detecting dangling pointers
+  - service -e update self -label placeholder1
+
+Recursive diff that gives us exactly what we want:
+  diff -rq

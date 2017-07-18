@@ -1,0 +1,28 @@
+These are all GET methods:
+
+####### From outer VM:
+
+/<filepath:re:.*\..*> #anything with a dot in it somewhere serves a static file from server PWD
+
+
+####### From inner (MINIX) VM:
+/hexdump/?path=absolute_path                                        # hexdump results for a particular file
+/cat/?path=absolute_path                                            # cat results for a particular file
+/tree/?path=absolute_path?maxdepth=depth_limit                      # maxdepth arg optional. Gives your tree results in JSON format
+
+/arbitrary_command/?command=command_string&return_result=true/false # run any command. set return_result to true if you want to see the results. otherwise returns "done"
+
+/filter/?script_name=script_name&dev_names=[dev_name]               # Specify the script's name and 1 or more device names. Returns {"RtL": [paths], "LtR": [paths]} as specified by script behaviour. Not implemented yet
+# the following 3 are on the chopping block once /filter above is implemented
+/diff?dir1=dir1=full_path_to_dir1&dir2=full_path_to_dir2            # returns diff of two directories (dirs, files, and symlinks checked currently. other files will be missed. TODO: depending on response from Cristiano & Herbert about actual "diff" program working in /peek, behaviour may change). Returns same dict structure as /filter
+/memleaks?dev_name=dev_name                                         # gives you a list of files in .dynamic dir corresponding to memleaks in LtR key of dict
+/bad_pointers?dev_name=dev_name                                     # gives you a list of symlinks pointing to .ptr/invalid in LtR key of dict
+
+/restart                                                            # graceful restart
+/connection_status                                                  # returns {"alive": true/false}
+
+
+/immediateresponse                                                  # gives you an immediate response
+/sleep_test/20                                                      # waits x (20 in example) seconds and then returns "SLEPT x secs"
+/crash_server                                                       # crashes the server
+/kill_running_trees                                                 # kills all running tree instances on MINIX machine

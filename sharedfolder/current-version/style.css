@@ -1,0 +1,231 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.status-img {
+  width: 15px;
+}
+
+.hide {
+  display:none;
+}
+
+
+/* ===================================================
+ *         Peek Tree Functionality
+ * ===================================================
+ */
+
+
+#peek_tree, #diff_tree {
+    width:500px;
+    height:90%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    float:left;
+}
+
+#peek_tree li span.tree_fetching:after {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  content: "";
+  margin-left:10px;
+  background: url('images/rebooting.gif');
+  background-size: 100%;
+
+}
+
+#peek_tree .directory span, #diff_tree .directory span {
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+
+#peek_tree li.directory, #diff_tree li.directory {
+    cursor: pointer;
+}
+
+#peek_tree li span, #diff_tree li span {
+  margin-left: -5px;
+  display: inline-block;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+#peek_tree li > span:hover, #diff_tree li > span:hover {
+  background-color:pink;
+}
+
+#peek_tree .directory > ul, #diff_tree .directory > ul{
+  display:none;
+}
+#peek_tree .directory.expanded > ul, #diff_tree .directory.expanded > ul {
+/*.directory ul.expanded { */
+  display: block;
+}
+
+#peek_tree div > ul, #diff_tree div > ul {
+  max-width: 100%;
+}
+
+#peek_tree ul, #diff_tree ul {
+    padding-left: 15px;
+    border-left: 1px solid rgba(0,0,0,0.2);
+}
+
+#peek_tree ul, #diff_tree ul {
+    list-style: none; /* This removes the default bullets */
+    padding-left: 15px; /* This provides proper indentation for your icons */
+}
+#peek_tree ul li, #diff_tree ul li {
+    position: relative; /* Allows you to absolutely place the :before element
+                           relative to the <li>'s bounding box. */
+}
+
+#peek_tree ul > li:nth-child(even), #diff_tree ul > li:nth-child(even) {
+    background-color: rgba(0,0,0,0.1);
+}
+#peek_tree ul > li:nth-child(even) ul, #diff_tree ul > li:nth-child(even) ul {
+    background-color: white;
+}
+
+
+#peek_tree ul li i, #diff_tree ul li i {
+    padding-right: 5px;
+}
+
+#peek_tree .tree_fetched > span > i, #diff_tree .tree_fetched > span > i {
+    color: green;
+}
+
+#peek_tree li.selected > span, #diff_tree li.selected > span {
+    border: 1px solid black;
+}
+
+
+/* ==============================================
+ *           Custom functions and filters
+ * ==============================================
+ */
+
+.ui-input {
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    min-width: 230px;
+    outline: none;
+    border: 1px solid #cccccc;
+    font-size: 12px;
+    margin-left: 2px;
+}
+
+
+.box {
+    padding: 10px;
+    float: left;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 3px;
+    margin: 5px;
+}
+
+#functionbox, #filterbox {
+    width: 250px;
+    height:400px;
+}
+
+
+.box button {
+    min-width: 230px;
+}
+
+/* TEST: for coloring nodes purple */
+.filter_regex > span {
+    background-color: rgba(128,0,128,0.6);
+}
+
+.filter_funcpurple > span {
+    background-color: rgba(128,0,128,0.6);
+}
+
+.filter_danglingptr > span {
+    background-color: rgba(128, 0, 0, 0.6);
+}
+
+.filter_memleak > span {
+    background-color: rgba(128, 128, 0, 0.6);
+}
+
+.filter_diff_LtR > span {
+    background-color: rgba(134, 179, 45, 0.8);
+}
+
+.filter_diff_RtL > span {
+    background-color: rgba(0, 153, 153, 0.8);
+}
+
+.filter_diff_both > span {
+    background-color: rgba(255, 115, 115, 0.8);
+}
+
+.filter-enabled, filter-enabled:hover {
+    border-color: green;
+}
+
+
+/* ===========================================
+ *            Cat / hex / output box
+ * ===========================================
+ */
+#filecontentbox {
+    width: 510px;
+    height: 400px;
+    float:left;
+}
+
+pre {
+    background-color: white;
+    border-radius: 3px;
+    padding: 5 10px;
+    margin: 0px;
+    max-width: 100%;
+    max-height: 350px;
+    overflow: auto;
+}
+
+samp {
+    font-family: monospace;
+}
+
+#filecontentbox ul {
+    padding: 0;
+    margin: 0;
+}
+
+#filecontentbox li {
+    list-style-type: none;
+    display: inline-block;
+    background-color: #d0d0d0;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 0;
+    cursor: pointer;
+}
+
+
+/* ===========================================
+ *            Peter's diff stuff (organize later)
+ * ===========================================
+ */
+
+.hidden {
+  display:none;
+}

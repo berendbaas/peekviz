@@ -1,0 +1,2 @@
+C="lol"
+echo $C

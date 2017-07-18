@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>PeekFS Visualizer</title>
+        <!--<link rel="stylesheet" href="style.css">-->
+        <link rel="stylesheet" href="js-css-libs/jquery-ui.css">
+        <link rel="stylesheet" href="js-css-libs/jquery-ui.structure.css">
+        <link rel="stylesheet" href="js-css-libs/jquery-ui.theme.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="js-css-libs/font-awesome.min.css">
+        <script src="js-css-libs/jquery-3.2.1.js"></script>
+        <script src="js-css-libs/jquery-ui.js"></script>
+
+    </head>
+    <body>
+      <div id="status-div ui-widget">
+        <!--<div class="ui-state-green ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">-->
+        <button id="restart" class="ui-button ui-corner-all ui-widget">
+          <span>Connection status:
+            <span id=rebooting>
+              acquiring connection
+              <img class=status-img id="rebooting-img" src="images/rebooting.gif">
+              <!--press to restart manually-->
+            </span>
+            <span id=good-to-go>
+              <img class=status-img id="good-to-go-img" src="images/good-to-go.gif">
+              <!--press to restart manually-->
+            </span>
+          </span>
+        </button>
+      <!--</div>-->
+      </div>
+
+
+      <div id="peek_tree">
+
+      </div>
+
+
+      <div id="functionbox" class="box">
+        <h2>Functions</h2>
+        <p>Mark services with alt-click</p>
+        <button id="func_rescan" class="ui-button ui-corner-all ui-widget">Rescan /peek</button>
+        <button id="func_crash" class="ui-button ui-corner-all ui-widget">Crash VM</button>
+        <button id="func_kill_trees" class="ui-button ui-corner-all ui-widget">Kill running trees</button>
+        <button id="func_take_snapshot" class="ui-button ui-corner-all ui-widget">Take snapshot</button>
+        <!-- <button id="func_watch" class="ui-button ui-corner-all ui-widget">Watch file (WIP)</button> -->
+      </div>
+
+      <div id="filterbox" class="box">
+        <h2>Filters</h2>
+        <p>Mark services with alt-click</p>
+        <input type="text" placeholder="Regex filter" class="ui-input" id="filter_regex"/>
+
+        <button id="filter_funcpurple" class="ui-button ui-corner-all ui-widget">Color __func__ purple </button>
+        <button id="filter_memleak" class="ui-button ui-corner-all ui-widget">Highlight memleaks</button>
+        <button id="filter_danglingptr" class="ui-button ui-corner-all ui-widget">Highlight dangling pointers</button>
+        <button id="filter_diff" class="ui-button ui-corner-all ui-widget">Diff services</button>
+
+        <p> Todo: Custom functions from diff_directory</p>
+      </div>
+
+      <div id="filecontentbox" class="box">
+        <h2>File inspection</h2>
+        <ul>
+          <li id="button_select_cat">Cat</li>
+          <li id="button_select_hex">Hexdump</li>
+        </ul>
+        <pre>
+<samp id="output">
+</samp>
+        </pre>
+      </div>
+
+    </body>
+    <script src="js/set_operations.js"></script>
+    <script src="js/misc.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/debug.js"></script>
+    <script src="js/status.js"></script>
+    <script src="js/tree.js"></script>
+
+    <script src="custom.js"></script>
+</html>
