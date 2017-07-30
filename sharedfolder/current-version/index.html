@@ -40,7 +40,7 @@
         <h2>Functions</h2>
         <p>Mark services with alt-click</p>
         <button id="func_rescan" class="ui-button ui-corner-all ui-widget">Rescan /peek</button>
-        <button id="func_crash" class="ui-button ui-corner-all ui-widget">Crash VM</button>
+        <button style="display:none" id="func_crash" class="ui-button ui-corner-all ui-widget">Crash VM</button>
         <button id="func_kill_trees" class="ui-button ui-corner-all ui-widget">Kill running trees</button>
         <button id="func_take_snapshot" class="ui-button ui-corner-all ui-widget">Take snapshot</button>
         <!-- <button id="func_watch" class="ui-button ui-corner-all ui-widget">Watch file (WIP)</button> -->
@@ -51,12 +51,10 @@
         <p>Mark services with alt-click</p>
         <input type="text" placeholder="Regex filter" class="ui-input" id="filter_regex"/>
 
-        <button id="filter_funcpurple" class="ui-button ui-corner-all ui-widget">Color __func__ purple </button>
+        <button id="filter_funcpurple" style="display:none" class="ui-button ui-corner-all ui-widget">Color __func__ purple </button>
         <button id="filter_memleak" class="ui-button ui-corner-all ui-widget">Highlight memleaks</button>
         <button id="filter_danglingptr" class="ui-button ui-corner-all ui-widget">Highlight dangling pointers</button>
         <button id="filter_diff" class="ui-button ui-corner-all ui-widget">Diff services</button>
-
-        <p> Todo: Custom functions from diff_directory</p>
       </div>
 
       <div id="filecontentbox" class="box">
