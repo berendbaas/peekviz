@@ -1,7 +1,7 @@
 /* Core methods used by all other modules */
 
-server_url = "http://127.0.0.1"
-server_port = "8080"
+server_url = "http://130.37.198.98"
+server_port = "80"
 
 function send_request(path, data, callback) {
   $.ajax({
