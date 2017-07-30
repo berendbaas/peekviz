@@ -113,4 +113,4 @@ PORT=2222 # can be anything - just make sure that it matches the VM_SSH_PORT var
 cd $HOME/llvmapps-minix/apps/minix
 RUNARGS=" -localtime -net user,hostfwd=tcp::$PORT-:22 -net nic " ./clientctl run
 ```
-#### Connect to it with the server at sharedfolder/current-version/server.py <http listening port>
+#### Connect to it with the server at sharedfolder/current-version/server.py \<http listening port\>
