@@ -39,7 +39,7 @@ DRIVERS_PATH=$ROOT_DIR/apps/minix/minix/minix/drivers/examples
 MAKEFILE_PATH=$ROOT_DIR/apps/minix/minix/minix/drivers/examples/Makefile
 ```
 
-#### Rebuild MINIX.
+#### Rebuild MINIX if you added custom drivers.
 
 ```sh
 cd $HOME/llvmapps-minix
@@ -49,7 +49,7 @@ cd $HOME/llvmapps-minix
 #### Then, install clang (don't do this before - the MINIX build failed for us if clang was already installed) for 'magic' installation
 
 ```sh
-sudo apt-get install clang # IF YOU EVER NEED TO ./autosetup-minix.sh AGAIN, MAKE SURE TO UNINSTALL CLANG (not tested yet but hypothesized by process of elimination)
+sudo apt-get install clang # IF YOU EVER NEED TO ./autosetup-minix.sh AGAIN, MAKE SURE TO UNINSTALL CLANG (not tested exhaustively but hypothesized)
 cd $ROOT_DIR/llvm/static/magic
 make install
 cd $ROOT_DIR/llvm/passes/magic
@@ -109,7 +109,8 @@ shutdown -pD now
 #### Now you're ready to rock and roll. Launch the VM.
 
 ```sh
+PORT=2222 # can be anything - just make sure that it matches the VM_SSH_PORT variable in server.py
 cd $HOME/llvmapps-minix/apps/minix
-RUNARGS=" -localtime -net user,hostfwd=tcp::2222-:22 -net nic " ./clientctl run
+RUNARGS=" -localtime -net user,hostfwd=tcp::$PORT-:22 -net nic " ./clientctl run
 ```
-#### Connect to it with the server at sharedfolder/current-version/server_autoreboot.py <listening port>
+#### Connect to it with the server at sharedfolder/current-version/server.py <http listening port>
