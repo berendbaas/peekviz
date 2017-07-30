@@ -27,13 +27,14 @@ cd llvmapps-minix
 ```
 #### This will take a while. After it finishes...
 
-#### TODO: copy custom drivers with script in driverframework/drivers/copy/sh
+#### If desired, now is the time to add your custom drivers to MINIX (TODO: file locations)
+
 ```sh
 cd $HOME/llvmapps-minix
 ./autosetup-minix.sh
 ```
 
-#### After...
+#### Then, install clang (don't do this before - the MINIX build failed for us if clang was already installed) for 'magic' installation
 
 ```sh
 sudo apt-get install clang # IF YOU EVER NEED TO ./autosetup-minix.sh AGAIN, MAKE SURE TO UNINSTALL CLANG (not tested yet but hypothesized by process of elimination)
@@ -43,16 +44,19 @@ cd $ROOT_DIR/llvm/passes/magic
 make install
 ```
 
-#### Then add your custom drivers to relevant files...TODO (fill in files)
+### Build MINIX image with custom drivers instrumented
 
-#### Then... (TODO change if $1 = "peter" check)
 ```sh
 CUSTOM_DRIVERS="driver1,driver2,etc"
 /media/sharedfolder/driverframework/relink-build.sh $CUSTOM_DRIVERS
 ```
 
+<!--
 #### Then...
  * In llvmapps-minix/apps/minix/minix/minix/llvm/clientctl, change MEMSIZE from 512 to 2048
+-->
+
+### Launch MINIX VM and set up networking
 
 ```sh
 cd $HOME/llvmapps-minix/apps/minix
@@ -65,7 +69,7 @@ shutdown -pD now
 ```
 
 
-#### THEN...
+#### After it's shut down, start it back up again and install pkgin, the package manager and GNU tree 1.7
 ```sh
 cd $HOME/llvmapps-minix/apps/minix
 RUNARGS=" -net user -net nic " ./clientctl run
@@ -90,8 +94,10 @@ mv bin/tree /sbin/tree17
 shutdown -pD now
 ```
 
-#### THEN...
+#### Now you're ready to rock and roll. Launch the VM.
+
 ```sh
 cd $HOME/llvmapps-minix/apps/minix
 RUNARGS=" -localtime -net user,hostfwd=tcp::2222-:22 -net nic " ./clientctl run
 ```
+#### Connect to it with the server at sharedfolder/current-version/server_autoreboot.py <listening port>
