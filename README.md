@@ -27,7 +27,19 @@ cd llvmapps-minix
 ```
 #### This will take a while. After it finishes...
 
-#### If desired, now is the time to add your custom drivers to MINIX (TODO: file locations)
+#### If desired, now is the time to add your custom drivers to MINIX. Modify the following files and directories to include your driver(s).
+```sh
+ROOT_DIR="$HOME/llvmapps-minix"
+
+MI_FILE=$ROOT_DIR/apps/minix/minix/distrib/sets/lists/minix/mi
+MINIX_MODS_MAP=$ROOT_DIR/apps/minix/minix/minix.mods.map
+SYSTEM_CONF_PATH=$ROOT_DIR/apps/minix/obj.i386/destdir.i386/etc/system.conf
+MINIX_ROOT_DIR=$ROOT_DIR/apps/minix/obj.i386/destdir.i386/root
+DRIVERS_PATH=$ROOT_DIR/apps/minix/minix/minix/drivers/examples
+MAKEFILE_PATH=$ROOT_DIR/apps/minix/minix/minix/drivers/examples/Makefile
+```
+
+#### Rebuild MINIX.
 
 ```sh
 cd $HOME/llvmapps-minix
