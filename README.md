@@ -11,8 +11,8 @@ UI for peekFS state visualization and components for educational use.
     * ![portforward-pic2](portforward-pic2.png)
   * Add yourself to vboxsf group on Ubuntu VM:
     * ```sh
-    sudo adduser $USER vboxsf
-    ```
+      sudo adduser $USER vboxsf
+      ```
 
 ```sh
 BITBUCKET_USERNAME=pistoletpierre # CHANGE TO YOUR BITBUCKET USERNAME
