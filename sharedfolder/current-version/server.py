@@ -16,8 +16,8 @@ INITIAL_CONNECTION_TIMEOUT_VAL = 2
 
 NEW_VM_INSTANCE_COMMAND = "VBoxManage startvm \"Minix-PeekFS\""
 KILL_VM_INSTANCE_COMMAND = "VBoxManage controlvm \"Minix-PeekFS\" poweroff"
-#NEW_VM_INSTANCE_COMMAND = "qemu-system-i386 -kernel kernel -append  rootdevname=c0d0p1 console=tty00 -localtime -net user,hostfwd=tcp::2222-:22 -net nic -m 512 -hda /home/peter/llvmapps-minix/apps/minix/minix/minix_x86.img -nographic -initrd mod01_ds,mod02_rs,mod03_pm,mod04_sched,mod05_vfs,mod06_memory,mod07_tty,mod08_mfs,mod09_vm,mod10_pfs,mod11_init"
-#KILL_VM_INSTANCE_COMMAND = "kill $(ps aux | grep qemu | grep -v grep | awk '{print $2}')"
+NEW_VM_INSTANCE_COMMAND = 'RUNARGS=" -localtime -net user,hostfwd=tcp::'+str(VM_SSH_PORT)+'-:22 -net nic -smp cores=2 " /home/minixuser/llvmapps-minix/apps/minix/clientctl run'
+KILL_VM_INSTANCE_COMMAND = "kill $(ps aux | grep qemu | grep -v grep | awk '{print $2}')"
 CONNECTION_ALIVE = False
 COMMAND_PREFIX = "cd /peek; "
 COMMAND_PREFIX_TEMP = ""
@@ -299,7 +299,7 @@ def tree():
     # --device for device numbers
     # -F for appending useful stuff to hint at filetype ('/' for dirs, '=' for socket files, '*' for executables, '|' for FIFOs like ls -F)
     print "command:", command
-    result = do_command(command, ssh)
+    result = json.dumps(json.loads(do_command(command, ssh).decode("utf-8","ignore"), strict=False))
     return result
 
 @route('/arbitrary_command', method='GET')
@@ -497,7 +497,8 @@ def kill_running_trees(): # returns string of killed PIDs
 
 SERVER = ['auto', 'paste'][1]
 
-start_vm()
+#start_vm()
+establish_connections()
 if not os.path.dirname(__file__) == "":
     os.chdir(os.path.dirname(__file__))
 

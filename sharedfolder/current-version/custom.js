@@ -1,6 +1,6 @@
 
 test_aliveness()
-window.setInterval(test_aliveness, 5000);
+window.setInterval(test_aliveness, 10000);
 
 // initialize shadowdom
 var tree_shadow_dom = null;
